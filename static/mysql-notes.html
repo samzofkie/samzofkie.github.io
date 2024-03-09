@@ -17,142 +17,333 @@
 </head>
 
 <body>
+  <h1 id="mysql-sql">MySQL SQL</h1>
+  <p><code>SELECT</code> selects data from a database:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> *column1, column2, ...*
+        <span class="hljs-keyword">FROM</span> *tablename*;
+      </code></pre>
+  <pre><code><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> *tablename*;
+      </code></pre>
+  <p><code>SELECT DISTINCT</code> returns only distinct (non-duplicate) values:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> DISCTICT *column1, column2, ...*k
+        <span class="hljs-keyword">FROM</span> *tablename*;
+      </code></pre>
+  <p><code>WHERE</code> filters records:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> *column1, column2*
+        <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> *condition*;
+      </code></pre>
+  <table>
+    <thead>
+      <tr>
+        <th><code>WHERE</code> Operators</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>=</code></td>
+        <td>Equal</td>
+      </tr>
+      <tr>
+        <td><code>&gt;</code></td>
+        <td>Greater than</td>
+      </tr>
+      <tr>
+        <td><code>&lt;</code></td>
+        <td>Less than</td>
+      </tr>
+      <tr>
+        <td><code>&gt;=</code></td>
+        <td>Greater than or equal to</td>
+      </tr>
+      <tr>
+        <td><code>&lt;=</code></td>
+        <td>Less than or equal to</td>
+      </tr>
+      <tr>
+        <td><code>&lt;&gt;</code> (or <code>!=</code>)</td>
+        <td>Not equal</td>
+      </tr>
+      <tr>
+        <td><code>BETWEEN</code></td>
+        <td>Between a certain range</td>
+      </tr>
+      <tr>
+        <td><code>LIKE</code></td>
+        <td>Seach for a pattern</td>
+      </tr>
+      <tr>
+        <td><code>IN</code></td>
+        <td>Specify multiple possible values</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><code>ORDER BY</code> is used to sort the result set.</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> *column1, column2* <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> *column1, column2*, ...ASC|<span class="hljs-keyword">DESC</span>;
+      </code></pre>
+  <p><code>ASC</code> is for ascending and <code>DESC</code> is for descending. You can specify multiple columns to sort
+    by, and they will be sorted in that order.</p>
+  <p><code>AND</code> and <code>OR</code> are used to filter records based on more than one condition. You must use
+    parenthesis to get the correct order of operations&quot;</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> *condition1* <span class="hljs-keyword">AND</span> <span class="hljs-comment">(*condition2* OR *condition3*)</span>;
+      </code></pre>
+  <p><code>NOT</code> inverts a conditions:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> *condition*;
+      </code></pre>
+  <p>Add data to a table:</p>
+  <pre><code><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> *tablename* (*column1, column2,* ...)
+        <span class="hljs-keyword">VALUES</span>(*value1, value2*, ...);
+      </code></pre>
+  <p>If you are inserting data into all the columns of the table, you don&#39;t need to specify
+    <code>(*column1, column2,* ...)</code>.
+  </p>
+  <p>You can insert multiple rows with one statement like:</p>
+  <pre><code>INSERT INTO *tablename* (*column<span class="hljs-number">1</span>, column<span class="hljs-number">2</span>,* ...)
+        VALUES
+        (*<span class="hljs-keyword">value</span><span class="hljs-number">1</span>, <span class="hljs-keyword">value</span><span class="hljs-number">2</span>*, ...),
+        (*<span class="hljs-keyword">value</span><span class="hljs-number">1</span>, <span class="hljs-keyword">value</span><span class="hljs-number">2</span>*, ...),
+        (*<span class="hljs-keyword">value</span><span class="hljs-number">1</span>, <span class="hljs-keyword">value</span><span class="hljs-number">2</span>*, ...);
+      </code></pre>
+  <p><code>NULL</code> designates no value. There are special <code>IS NULL</code> and <code>IS NOT NULL</code>
+    operators
+    for comparing <code>NULL</code> with things.</p>
+  <p><code>UPDATE</code> lets us modify rows in a table that already exists:</p>
+  <pre><code>UPDATE <span class="hljs-emphasis">*tablename*</span>
+        SET <span class="hljs-emphasis">*column1*</span> = <span class="hljs-emphasis">*value1*</span>, <span class="hljs-emphasis">*column2*</span> = <span class="hljs-emphasis">*value2*</span>, ...
+        WHERE <span class="hljs-emphasis">*condition*</span>;
+      </code></pre>
+  <p><code>DELETE</code> can delete rows from a table:</p>
+  <pre><code><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> *condition*;
+      </code></pre>
+  <p><code>DELETE FROM *tablename*;</code> will delete all the entries in a table. <code>DROP TABLE *tablename*;</code>
+    will delete the table AND all it&#39;s entries.</p>
+  <p><code>SELECT</code> with <code>LIMIT</code> lets you select only a few records from a table:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> *columnnames*
+        <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> *condition*
+        <span class="hljs-keyword">LIMIT</span> *<span class="hljs-built_in">number</span>*;
+      </code></pre>
+  <p>This will select the first <code>*number*</code> rows. This is often used with an <code>ORDER BY</code> clause.</p>
+  <h2 id="aggregate-functions">Aggregate Functions</h2>
+  <p>An <strong>aggregate function</strong> is a function that performs a calculation on a set of values, and returns a
+    single value. They are often used with the <code>GROUP BY</code> clause of <code>SELECT</code> statement, which
+    splits
+    the result set into groups, which can then have an aggregate fuction applied.</p>
+  <p>Select the minimum (or <code>MAX</code>):</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> MIN<span class="hljs-comment">(*columnname*)</span>
+        <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> *condition*;
+      </code></pre>
+  <p>You can add a descriptive name to the column returned by an aggregate function with <code>AS</code>:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> MAX<span class="hljs-comment">(*columnname*)</span> 
+        <span class="hljs-keyword">AS</span> *resultsname*
+        <span class="hljs-keyword">FROM</span> *tablename*;
+      </code></pre>
+  <p>To use with a <code>GROUP BY</code> </p>
+  <pre><code><span class="hljs-keyword">SELECT</span> MIN<span class="hljs-comment">(*columnname*)</span> 
+        <span class="hljs-keyword">AS</span> *resultsname, columnname*
+        <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> *columnname*;
+      </code></pre>
+  <p><code>COUNT</code> returns the number of rows that match the specified criteria:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> COUNT<span class="hljs-comment">(*columnname*)</span>)
+        <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> *condition*;
+      </code></pre>
+  <p>You can count only rows that have distinct values for that column using the <code>DISTINCT</code> keyword:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> *columnname*)
+        <span class="hljs-keyword">FROM</span> *tablename*;
+      </code></pre>
+  <p><code>SUM</code> returns the sum of a numeric column:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> SUM<span class="hljs-comment">(*columnname*)</span>
+        <span class="hljs-keyword">FROM</span> *tablename*;
+      </code></pre>
+  <p><code>AVG</code> returns the average value of a numeric column:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> AVG<span class="hljs-comment">(*columnname*)</span>
+        <span class="hljs-keyword">FROM</span> *tablename*;
+      </code></pre>
+  <p>You could use it in a sub-query (this returns all records with a higher than average value for
+    <code>*columnname*</code>):
+  </p>
+  <pre><code><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> *columnname* &gt; (<span class="hljs-keyword">SELECT</span> AVG<span class="hljs-comment">(*columnname*)</span> <span class="hljs-keyword">FROM</span> *tablename*);
+      </code></pre>
+  <p>The <code>LIKE</code> operator is used in <code>WHERE</code> clauses to search for a specified pattern in a column:
+  </p>
+  <ul>
+    <li>The percent sign <code>%</code> represents zero, one, or multiple characters</li>
+    <li>The underscore sign <code>_</code> represents one single character</li>
+  </ul>
+  <p>For example,</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> *columnname* <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'a%'</span>;
+      </code></pre>
+  <p>would select all of the records for which <code>*columnname*</code> starts with the letter &quot;a&quot;.</p>
+  <p><code>IN</code> allows you to specify multiple values in a <code>WHERE</code> clause:</p>
+  <pre><code>SELECT <span class="hljs-emphasis">*columnname*</span>
+        FROM <span class="hljs-emphasis">*tablename*</span>
+        WHERE <span class="hljs-emphasis">*columnname*</span> 
+        IN (<span class="hljs-emphasis">*value1*</span>, <span class="hljs-emphasis">*value2*</span>, ...);
+      </code></pre>
+  <p>You can also use <code>NOT IN</code>, or replace the value list in between the parenthesis with a sub-query.</p>
+  <p>There is a <code>BETWEEN</code> operator:</p>
+  <pre><code><span class="hljs-keyword">SELECT</span> *columnname*
+        <span class="hljs-keyword">FROM</span> *tablename*
+        <span class="hljs-keyword">WHERE</span> *columnname* <span class="hljs-keyword">BETWEEN</span> *value1* <span class="hljs-keyword">AND</span> *value2*;
+      </code></pre>
+  <p><code>BETWEEN</code> also works with text and time and date values.</p>
+  <h2 id="aliases">Aliases</h2>
+  <p><strong>Aliases</strong> Are created with the <code>AS</code> keyword. They&#39;re used to give a table or column a
+    temporary, more readable name.</p>
   <h1 id="mysql-sql-database">MySQL SQL Database</h1>
   <p>Databases</p>
   <pre><code><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> *databasename*;
-  </code></pre>
+</code></pre>
   <pre><code><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">DATABASE</span> *databasename*;
-  </code></pre>
+</code></pre>
   <p>Tables</p>
   <pre><code><span class="hljs-type">CREATE</span> <span class="hljs-type">TABLE</span> *tablename* (
-    *column1 data<span class="hljs-keyword">type</span>*,
-    *column2 data<span class="hljs-keyword">type</span>*,
-    *column3 data<span class="hljs-keyword">type</span>*
+  *column1 data<span class="hljs-keyword">type</span>*,
+  *column2 data<span class="hljs-keyword">type</span>*,
+  *column3 data<span class="hljs-keyword">type</span>*
   );
   </code></pre>
   <pre><code><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> *tablename* <span class="hljs-keyword">AS</span>
-    <span class="hljs-keyword">SELECT</span> *column1, column2,...*
-    <span class="hljs-keyword">FROM</span> *existingtablename*
-    <span class="hljs-keyword">WHERE</span> ...;
+  <span class="hljs-keyword">SELECT</span> *column1, column2,...*
+  <span class="hljs-keyword">FROM</span> *existingtablename*
+  <span class="hljs-keyword">WHERE</span> ...;
   </code></pre>
   <pre><code><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> *tablename*;
-  </code></pre>
+</code></pre>
   <p>To delete the data in a table, but not the table itself:</p>
   <pre><code><span class="hljs-keyword">TRUNCATE</span> <span class="hljs-keyword">TABLE</span> *tablename*;
-  </code></pre>
+</code></pre>
   <p>Modifying a table&#39;s columns:</p>
   <pre><code><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> *tablename*
-    <span class="hljs-keyword">ADD</span> *columnname datatype*;
+  <span class="hljs-keyword">ADD</span> *columnname datatype*;
   </code></pre>
   <pre><code><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> *tablename*
-    <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">COLUMN</span> *columnname*;
+  <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">COLUMN</span> *columnname*;
   </code></pre>
   <pre><code><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> *tablename*
-    <span class="hljs-keyword">RENAME</span> <span class="hljs-keyword">COLUMN</span> *oldname* <span class="hljs-keyword">TO</span> *newname*;
+  <span class="hljs-keyword">RENAME</span> <span class="hljs-keyword">COLUMN</span> *oldname* <span
+    class="hljs-keyword">TO</span> *newname*;
   </code></pre>
   <pre><code><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> *tablename*
-    <span class="hljs-keyword">MODIFY</span> <span class="hljs-keyword">COLUMN</span> *columnname* *datatype*;
+  <span class="hljs-keyword">MODIFY</span> <span class="hljs-keyword">COLUMN</span> *columnname* *datatype*;
   </code></pre>
   <h2 id="constraints">Constraints</h2>
   <p>SQL <strong>constraints</strong> are used to specify rules for data in a table.</p>
   <pre><code><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> *tablename* (
-    *column1 datatype <span class="hljs-keyword">constraint</span>*,
-    *column2 datatype <span class="hljs-keyword">constraint</span>*,
-    ...
+  *column1 datatype <span class="hljs-keyword">constraint</span>*,
+  *column2 datatype <span class="hljs-keyword">constraint</span>*,
+  ...
   );
   </code></pre>
   <p>Constraints are used to limit the type of data that can go into a table, to unsure accuracy and integrity. If a
-    data action violates a constraint, it will be aborted. Constraints can be column-level or table-level.</p>
+    data
+    action violates a constraint, it will be aborted. Constraints can be column-level or table-level.</p>
   <p><code>NOT NULL</code>: a table cannot have a null value:</p>
   <pre><code><span class="hljs-keyword">CREATE</span> TABLE *tablename* (
-    *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
-    *column2 datatype*,
-    ...,
-    UNIQUE <span class="hljs-comment">(*column1*)</span>
+  *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
+  *column2 datatype*,
+  ...,
+  UNIQUE <span class="hljs-comment">(*column1*)</span>
   );
   </code></pre>
   <p><code>UNIQUE</code>: all values in a column are different. To name a <code>UNIQUE</code> constraint and define it
-    on multiple columns:</p>
+    on
+    multiple columns:</p>
   <pre><code><span class="hljs-keyword">CREATE</span> TABLE *tablename* (
-    *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
-    *column2 datatype*,
-    ...,
-    CONSTRAINT *constraintname* UNIQUE <span class="hljs-comment">(*column1*, *column2*)</span>
+  *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
+  *column2 datatype*,
+  ...,
+  CONSTRAINT *constraintname* UNIQUE <span class="hljs-comment">(*column1*, *column2*)</span>
   );
   </code></pre>
   <pre><code>ALTER TABLE *tablename*
-    <span class="hljs-keyword">ADD</span> UNIQUE <span class="hljs-comment">(*columnname*)</span>;
+  <span class="hljs-keyword">ADD</span> UNIQUE <span class="hljs-comment">(*columnname*)</span>;
   </code></pre>
   <p><code>PRIMARY KEY</code>: <code>NOT NULL</code> and <code>UNIQUE</code>. You can only have one per table:</p>
   <pre><code><span class="hljs-keyword">CREATE</span> TABLE *tablename* (
-    *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
-    *column2 datatype*,
-    PRIMARY KEY <span class="hljs-comment">(*column1*)</span>
+  *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
+  *column2 datatype*,
+  PRIMARY KEY <span class="hljs-comment">(*column1*)</span>
   );
   </code></pre>
   <p>To name a <code>PRIMARY KEY</code> constraint or to allow the VALUE of the primary key to be made up of two
-    columns:</p>
+    columns:
+    </p>
   <pre><code><span class="hljs-keyword">CREATE</span> TABLE *tablename* (
-    *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
-    *column2 datatype* <span class="hljs-keyword">NOT</span> NULL,
-    ...,
-    CONSTRAINT *constraintname* PRIMARY KEY <span class="hljs-comment">(*column1, column2*)</span>
+  *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
+  *column2 datatype* <span class="hljs-keyword">NOT</span> NULL,
+  ...,
+  CONSTRAINT *constraintname* PRIMARY KEY <span class="hljs-comment">(*column1, column2*)</span>
   );
   </code></pre>
   <pre><code>ALTER TABLE *tablename*
-    <span class="hljs-keyword">ADD</span> PRIMARY KEY <span class="hljs-comment">(*columnname*)</span>;
+  <span class="hljs-keyword">ADD</span> PRIMARY KEY <span class="hljs-comment">(*columnname*)</span>;
   </code></pre>
   <pre><code><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> *tablename*
-    <span class="hljs-keyword">DROP</span> PRIMARY <span class="hljs-keyword">KEY</span>;
+  <span class="hljs-keyword">DROP</span> PRIMARY <span class="hljs-keyword">KEY</span>;
   </code></pre>
   <p><code>FOREIGN KEY</code>: prevents actions that would destroy links between tables:</p>
   <pre><code><span class="hljs-keyword">CREATE</span> TABLE *tablename* (
-    *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
-    *column2 datatype*,
-    ...,
-    FOREIGN KEY <span class="hljs-comment">(*column2*)</span> REFERENCES *table2name(table2column)*
+  *column1 datatype* <span class="hljs-keyword">NOT</span> NULL,
+  *column2 datatype*,
+  ...,
+  FOREIGN KEY <span class="hljs-comment">(*column2*)</span> REFERENCES *table2name(table2column)*
   );
   </code></pre>
   <pre><code>ALTER TABLE *tablename*
-    <span class="hljs-keyword">ADD</span> FOREIGN KEY <span class="hljs-comment">(*columnname*)</span> REFERENCES *othertable(columnname)*;
+  <span class="hljs-keyword">ADD</span> FOREIGN KEY <span class="hljs-comment">(*columnname*)</span> REFERENCES
+  *othertable(columnname)*;
   </code></pre>
   <p><code>CHECK</code>: ensures that the values in a column satisfy a certain condition:</p>
   <pre><code>CREATE TABLE *tablename* (
-    <span class="hljs-name">*column1</span> datatype*,
-    *column2* int,
-    CHECK (<span class="hljs-name">*column2*&gt;=18</span>)
+  <span class="hljs-name">*column1</span> datatype*,
+  *column2* int,
+  CHECK (<span class="hljs-name">*column2*&gt;=18</span>)
   )<span class="hljs-comment">;</span>
   </code></pre>
   <pre><code><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> *tablename*
-    <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CHECK</span> (*column2*&gt;=<span class="hljs-number">18</span>);
+  <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CHECK</span> (*column2*&gt;=<span
+    class="hljs-number">18</span>);
   </code></pre>
   <p><code>DEFAULT</code>: sets a default value for a column if no other one is defined:</p>
   <pre><code><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> *tablename* (
-      *column1 datatype* <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
-      *column2* <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">'String Literal'</span>
-  );
-  </code></pre>
+    *column1 datatype* <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    *column2* <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>) <span
+      class="hljs-keyword">DEFAULT</span> <span class="hljs-string">'String Literal'</span>
+    );
+    </code></pre>
   <p><code>CREATE INDEX</code>: used to create and retrieve data from the database very quickly:</p>
   <pre><code><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> *indexname*
-    <span class="hljs-keyword">ON</span> *tablename(column1, column2, ...);
+  <span class="hljs-keyword">ON</span> *tablename(column1, column2, ...);
   </code></pre>
   <pre><code><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">INDEX</span> *indexname*
-    <span class="hljs-keyword">ON</span> *tablename(column1, column2, ...);
+  <span class="hljs-keyword">ON</span> *tablename(column1, column2, ...);
   </code></pre>
   <pre><code><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> *tablename*
-    <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">INDEX</span> indexname*;
+  <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">INDEX</span> indexname*;
   </code></pre>
   <p>The <code>AUTO INCREMENT</code> constraint allows a unique number to be generated automatically when a new record
-    is inserted into a table:</p>
+    is
+    inserted into a table:</p>
   <pre><code><span class="hljs-keyword">CREATE</span> TABLE *tablename* (
-    *column1* int <span class="hljs-keyword">NOT</span> NULL AUTO INCREMENT,
-    ...,
-    PRIMARY KEY <span class="hljs-comment">(*column1*)</span>
+  *column1* int <span class="hljs-keyword">NOT</span> NULL AUTO INCREMENT,
+  ...,
+  PRIMARY KEY <span class="hljs-comment">(*column1*)</span>
   );
   </code></pre>
   <p>For <code>AUTO INCREMENT</code> to start with a value other than <code>0</code>, use:</p>
   <pre><code><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> *tablename* AUTO_INCREMENT=<span class="hljs-number">100</span>;
-  </code></pre>
+</code></pre>
   <p>MySQL uses the following formats for dates and datetimes:</p>
   <ul>
     <li><code>DATE</code>: YYYY-MM-DD</li>
@@ -162,21 +353,22 @@
   </ul>
   <p>A <strong>view</strong> is a virtual table based on the result-set of a SQL statement, containing rows and columns,
     where the fields come from one or more real tables in a database. You can add statements and functions to the view
-    and present the data as if it were coming from a single table.</p>
+    and
+    present the data as if it were coming from a single table.</p>
   <pre><code><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> *viewname* <span class="hljs-keyword">AS</span>
-    <span class="hljs-keyword">SELECT</span> *column1,...*
-    <span class="hljs-keyword">FROM</span> *tablename*
-    <span class="hljs-keyword">WHERE</span> *condition*;
+  <span class="hljs-keyword">SELECT</span> *column1,...*
+  <span class="hljs-keyword">FROM</span> *tablename*
+  <span class="hljs-keyword">WHERE</span> *condition*;
   </code></pre>
   <pre><code><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> *viewname*
-  </code></pre>
+</code></pre>
   <pre><code><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">VIEW</span> *viewname* <span class="hljs-keyword">AS</span>
-    <span class="hljs-keyword">SELECT</span> *column1, column2,...*
-    <span class="hljs-keyword">FROM</span> *tablename*
-    <span class="hljs-keyword">WHERE</span> *condition*;
+  <span class="hljs-keyword">SELECT</span> *column1, column2,...*
+  <span class="hljs-keyword">FROM</span> *tablename*
+  <span class="hljs-keyword">WHERE</span> *condition*;
   </code></pre>
   <pre><code><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">VIEW</span> *viewname*;
-  </code></pre>
+</code></pre>
   <h2 id="data-types">Data Types</h2>
   <p>In SQL there are three main data types: string, numeric, and date and time.</p>
   <table>
@@ -293,7 +485,8 @@
       <tr>
         <td><code>DOUBLE(*size, d*)</code></td>
         <td>A &quot;normal-size&quot; float with <code>*size*</code> digits and <code>*d*</code> digits after the
-          decimal point.</td>
+          decimal point.
+          </td>
       </tr>
       <tr>
         <td><code>FLOAT(*p*)</code></td>
@@ -302,8 +495,6 @@
     </tbody>
   </table>
   <p>Date and date time data types are detailed above.</p>
-
-
 </body>
 
 </html>

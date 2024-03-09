@@ -1,3 +1,190 @@
+# MySQL SQL
+`SELECT` selects data from a database:
+```
+SELECT *column1, column2, ...*
+  FROM *tablename*;
+```
+
+```
+SELECT * FROM *tablename*;
+```
+
+`SELECT DISTINCT` returns only distinct (non-duplicate) values:
+```
+SELECT DISCTICT *column1, column2, ...*k
+  FROM *tablename*;
+```
+
+`WHERE` filters records:
+```
+SELECT *column1, column2*
+  FROM *tablename*
+  WHERE *condition*;
+```
+
+| `WHERE` Operators ||
+| --- | --- |
+| `=` | Equal |
+| `>` | Greater than |
+| `<` | Less than |
+| `>=` | Greater than or equal to |
+| `<=` | Less than or equal to |
+| `<>` (or `!=`) | Not equal |
+| `BETWEEN` | Between a certain range |
+| `LIKE` | Seach for a pattern |
+| `IN` | Specify multiple possible values |
+
+`ORDER BY` is used to sort the result set.
+```
+SELECT *column1, column2* FROM *tablename*
+  ORDER BY *column1, column2*, ...ASC|DESC;
+```
+
+`ASC` is for ascending and `DESC` is for descending. You can specify multiple columns to sort by, and they will be sorted in that order.
+
+`AND` and `OR` are used to filter records based on more than one condition. You must use parenthesis to get the correct order of operations"
+```
+SELECT * FROM *tablename*
+  WHERE *condition1* AND (*condition2* OR *condition3*);
+```
+
+`NOT` inverts a conditions:
+```
+SELECT * FROM *tablename*
+  WHERE NOT *condition*;
+```
+
+Add data to a table:
+```
+INSERT INTO *tablename* (*column1, column2,* ...)
+  VALUES(*value1, value2*, ...);
+```
+If you are inserting data into all the columns of the table, you don't need to specify `(*column1, column2,* ...)`.
+
+You can insert multiple rows with one statement like:
+```
+INSERT INTO *tablename* (*column1, column2,* ...)
+  VALUES
+  (*value1, value2*, ...),
+  (*value1, value2*, ...),
+  (*value1, value2*, ...);
+```
+
+`NULL` designates no value. There are special `IS NULL` and `IS NOT NULL` operators for comparing `NULL` with things.
+
+`UPDATE` lets us modify rows in a table that already exists:
+```
+UPDATE *tablename*
+  SET *column1* = *value1*, *column2* = *value2*, ...
+  WHERE *condition*;
+```
+
+`DELETE` can delete rows from a table:
+```
+DELETE FROM *tablename*
+  WHERE *condition*;
+```
+
+`DELETE FROM *tablename*;` will delete all the entries in a table. `DROP TABLE *tablename*;` will delete the table AND all it's entries.
+
+`SELECT` with `LIMIT` lets you select only a few records from a table:
+```
+SELECT *columnnames*
+  FROM *tablename*
+  WHERE *condition*
+  LIMIT *number*;
+```
+This will select the first `*number*` rows. This is often used with an `ORDER BY` clause.
+
+## Aggregate Functions
+An **aggregate function** is a function that performs a calculation on a set of values, and returns a single value. They are often used with the `GROUP BY` clause of `SELECT` statement, which splits the result set into groups, which can then have an aggregate fuction applied.
+
+Select the minimum (or `MAX`):
+```
+SELECT MIN(*columnname*)
+  FROM *tablename*
+  WHERE *condition*;
+```
+
+You can add a descriptive name to the column returned by an aggregate function with `AS`:
+```
+SELECT MAX(*columnname*) 
+  AS *resultsname*
+  FROM *tablename*;
+```
+
+To use with a `GROUP BY` 
+```
+SELECT MIN(*columnname*) 
+  AS *resultsname, columnname*
+  FROM *tablename*
+  GROUP BY *columnname*;
+```
+
+`COUNT` returns the number of rows that match the specified criteria:
+```
+SELECT COUNT(*columnname*))
+  FROM *tablename*
+  WHERE *condition*;
+```
+
+You can count only rows that have distinct values for that column using the `DISTINCT` keyword:
+```
+SELECT COUNT(DISTINCT *columnname*)
+  FROM *tablename*;
+```
+
+`SUM` returns the sum of a numeric column:
+```
+SELECT SUM(*columnname*)
+  FROM *tablename*;
+```
+
+`AVG` returns the average value of a numeric column:
+```
+SELECT AVG(*columnname*)
+  FROM *tablename*;
+```
+
+You could use it in a sub-query (this returns all records with a higher than average value for `*columnname*`):
+```
+SELECT * FROM *tablename*
+  WHERE *columnname* > (SELECT AVG(*columnname*) FROM *tablename*);
+```
+
+The `LIKE` operator is used in `WHERE` clauses to search for a specified pattern in a column:
+- The percent sign `%` represents zero, one, or multiple characters
+- The underscore sign `_` represents one single character
+
+For example,
+```
+SELECT * FROM *tablename*
+  WHERE *columnname* LIKE 'a%';
+```
+would select all of the records for which `*columnname*` starts with the letter "a".
+
+`IN` allows you to specify multiple values in a `WHERE` clause:
+```
+SELECT *columnname*
+  FROM *tablename*
+  WHERE *columnname* 
+  IN (*value1*, *value2*, ...);
+```
+
+You can also use `NOT IN`, or replace the value list in between the parenthesis with a sub-query.
+
+There is a `BETWEEN` operator:
+```
+SELECT *columnname*
+  FROM *tablename*
+  WHERE *columnname* BETWEEN *value1* AND *value2*;
+```
+
+`BETWEEN` also works with text and time and date values.
+
+## Aliases
+**Aliases** Are created with the `AS` keyword. They're used to give a table or column a temporary, more readable name.
+
 # MySQL SQL Database
 
 Databases
