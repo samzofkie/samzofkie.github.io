@@ -10,7 +10,7 @@ a {
   text-decoration: none;
 }
 
-header, footer {
+body>header, body>footer {
   display: flex;
   align-items: center;
   margin-top: 10px;
@@ -20,12 +20,20 @@ header, footer {
   background-color: #21212c;
 }
 
-header {
+body>header {
   justify-content: space-between;
 }
 
-.house {
-  height: 30px;
+.flower-logo {
+  height: 45px;
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+.flower {
+  height: 500px;
+  display: block;
+  margin: auto;
 }
 
 nav {
@@ -33,7 +41,7 @@ nav {
   gap: 10px;
 }
 
-.nav-root, .nav-link, .nav-root:visited, .nav-link:visited {
+footer i, .nav-link, .nav-root:visited, .nav-link:visited {
   color: inherit;
   text-decoration: none;
   padding: 10px;
@@ -41,12 +49,12 @@ nav {
   transition: color 0.25s, background-color 0.25s;
 }
 
-.nav-link, .nav-link:visited {
+footer i, .nav-link, .nav-link:visited {
   color: #d0d0d6;
   background-color: #2f2f42;
 }
 
-.nav-root:focus, .nav-link:hover {
+footer i:hover, .nav-root:focus, .nav-link:hover {
   color: #2f2f42;
   background-color: #d0d0d6;
 }
@@ -57,5 +65,6 @@ footer {
 }
 
 i {
-  font-size: 2em;
+  font-size: 1.75em;
+  color: #d0d0d6;
 }
