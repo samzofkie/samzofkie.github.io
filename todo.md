@@ -1,10 +1,8 @@
-- Optimize `jessi-flower` and `png`s and JPGs of tables I made for speed
+- Optimize `jessi-flower` and `png`s for speed
 - Properly color `jessi-flower`
 - Find favicon
-- Take picture of pants
-- Rewrite copy
+- Review all copy
 - Dark mode (/light mode)
-- Projects
 - Think about readability
 - Get a `@samzofkie.com` email address
 - Mobile layout
