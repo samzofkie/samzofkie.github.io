@@ -10,7 +10,7 @@ export default {
 			strict: true
 		}),
 		paths: {
-			base: process.argv.includes('dev') ? '' : '/samzofkie.github.io'
+			base: process.argv.includes('dev') ? '' : ''
 		}
 	}
 };
