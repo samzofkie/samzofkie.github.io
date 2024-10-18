@@ -9,4 +9,7 @@
 - Get a `@samzofkie.com` email address
 - Mobile layout
 - Gradients ?
-- Error pages
+- Error pages (404)
+- Change links color
+- Put picture of myself in `/about`
+- nix `/misc` page

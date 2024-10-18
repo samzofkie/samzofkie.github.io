@@ -138,8 +138,8 @@
 </p>
 
 <div style="display: flex; justify-content: space-evenly; align-items: center;">
-  <img src="/off-balance-form.png" alt="An image of a web form with the heaviest weight fonts on labels that are all left-aligned, making the layout feel unbalanced." style="width: 300px"/>
-  <img src="/column-balance-form.png" alt="An image of a web form that moves the heavy font weight labels to a column to the left,balancing out the layout." style="width: 300px"/>
+  <img src="/off-balance-form.png" alt="A web form with the heaviest weight fonts on labels that are all left-aligned, making the layout feel unbalanced." style="width: 300px"/>
+  <img src="/column-balance-form.png" alt="A web form that moves the heavy font weight labels to a column to the left,balancing out the layout." style="width: 300px"/>
 </div>
 
 <p>

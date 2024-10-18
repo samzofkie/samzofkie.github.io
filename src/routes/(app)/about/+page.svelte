@@ -34,7 +34,7 @@
   </p>
 
   <p>
-    In my free time I like working through my <a href="{base}/todo">long list</a> of programming-related things I'm interested in, <a href="{base}/misc#tables">building tables</a> and sewing.
+    In my free time I like working through my <a href="{base}/todo">long list</a> of programming-related things I'm interested in, making furniture and sewing.
   </p>
 
   <h2>Skills</h2>

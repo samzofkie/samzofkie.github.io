@@ -1,19 +1,8 @@
 <script>
   import '../app.css';
-  import { base } from '$app/paths';
 </script>
 
 <style>
-  .table-image {
-    width: 300px;
-  }
-
-  .table-gallery {
-    display: flex;
-    gap: 10px;
-    justify-content: space-evenly;
-  }
-
   h2 {
     margin-bottom: var(--padding-0);
   }
@@ -24,14 +13,6 @@
 </style>
 
 <div class="main-content">
-  <section id="tables">
-    <h2>Tables I've made</h2>
-    <div class="table-gallery">
-      <img class="table-image" src="{base}/table1.jpg" alt="A badass table I made." />
-      <img class="table-image" src="{base}/table2.jpg" alt="Another very nice table." />
-    </div>
-  </section>
-
   <section id="quotes">
     <h2>Some quotes I like</h2>
 
