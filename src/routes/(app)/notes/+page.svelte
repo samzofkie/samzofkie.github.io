@@ -1,6 +1,7 @@
 <script>
   import '../app.css';
   import { titleToPath } from '$lib/utils.js';
+  import { base } from '$app/paths';
 
   const notes = {
     'Data structures': [
@@ -34,7 +35,7 @@
       <ul>
       {#each notes[noteCategory] as title}
         <li>
-          <a href="/notes/{titleToPath(title)}">{title}</a>
+          <a href="{base}/notes/{titleToPath(title)}">{title}</a>
         </li>
       {/each}
       </ul>

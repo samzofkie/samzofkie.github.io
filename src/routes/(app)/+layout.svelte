@@ -1,6 +1,7 @@
 <script>
   import '$lib/palette.css';
   import { pathToTitle } from '$lib/utils.js';
+  import { base } from '$app/paths';
   import { page } from '$app/stores';
   import { browser } from '$app/environment';
 
@@ -105,14 +106,14 @@
 
 <div class="narrow">
   <header>
-    <a href="/" class="nav-root">
+    <a href="{base}/" class="nav-root">
       <img class="flower-logo" src="/jessi-flower-logo.png" alt="A line drawing of a flower." />
     </a>
     <nav>
-      <a href="/about" class="nav-link">About</a>
-      <a href="/notes" class="nav-link">Notes</a>
-      <a href="/projects" class="nav-link">Projects</a>
-      <a href="/misc" class="nav-link">Misc</a>
+      <a href="{base}/about" class="nav-link">About</a>
+      <a href="{base}/notes" class="nav-link">Notes</a>
+      <a href="{base}/projects" class="nav-link">Projects</a>
+      <a href="{base}/misc" class="nav-link">Misc</a>
     </nav>
   </header>
 

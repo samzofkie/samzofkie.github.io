@@ -1,5 +1,6 @@
 <script>
   import '../app.css';
+  import { base } from '$app/paths';
 </script>
 
 <style>
@@ -26,8 +27,8 @@
   <section id="tables">
     <h2>Tables I've made</h2>
     <div class="table-gallery">
-      <img class="table-image" src="/table1.jpg" alt="A badass table I made." />
-      <img class="table-image" src="/table2.jpg" alt="Another very nice table." />
+      <img class="table-image" src="{base}/table1.jpg" alt="A badass table I made." />
+      <img class="table-image" src="{base}/table2.jpg" alt="Another very nice table." />
     </div>
   </section>
 
