@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Sam Zofkie</title>
+
+		
+		<link href="../_app/immutable/assets/2.BzkvGSh8.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/palette.BUO4EXAJ.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/3.CCmcT8fn.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/app.DorXpWP5.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.D8zJcVFl.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/entry.DWEJqUym.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.Cs0xm5t1.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.CVhHqf8x.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.Cky_bo-2.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.DeDwQ5e1.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.CTvuPqwa.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/utils.DmS9rhxz.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores.Cz401rLC.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/3.lt4Keglc.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/17.A7p_3S0Y.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">   <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet">  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">  <div class="narrow svelte-l62qxq"><header class="svelte-l62qxq" data-svelte-h="svelte-lybxnn"><a href="/" class="nav-root"><img class="flower-logo svelte-l62qxq" src="/jessi-flower-logo.png" alt="A line drawing of a flower."></a> <nav class="svelte-l62qxq"><a href="/about" class="nav-link svelte-l62qxq">About</a> <a href="/notes" class="nav-link svelte-l62qxq">Notes</a> <a href="/projects" class="nav-link svelte-l62qxq">Projects</a> <a href="/misc" class="nav-link svelte-l62qxq">Misc</a></nav></header> <main class="svelte-l62qxq"><div class="main-content"><a href="/notes" class="svelte-ktzxg4" data-svelte-h="svelte-zbouix"><i class="bx bx-left-arrow-alt"></i> Notes</a> <article id="stacks"><h1 data-svelte-h="svelte-1lz42wx">Stacks</h1> <p data-svelte-h="svelte-jyttmr"><b>Stacks</b> are dynamic sets whose <code>delete</code> operation removes the most recently inserted element: stacks are <b>last-in, first out (LIFO)</b>.</p> <p data-svelte-h="svelte-dc3w1p">Stacks get their name (and or inspiration) from spring-loaded stacks of plates found in cafeterias.</p> <p data-svelte-h="svelte-xwv8fm">Stacks have a <code>top</code> attribute, which is the index of the most recently inserted element, and a <code>size</code> attribute, which specifies the maximum size of the underlying array. When <code>top</code> equals zero the stack is empty.</p> <pre><code><!-- HTML_TAG_START -->struct Stack {
+  int size, top;
+  int array[STACK_SIZE];
+};
+
+bool stack_empty(struct Stack s) {
+  return (s.top == 0); 
+}
+
+int push(struct Stack s, int x) {
+  if (s.top == s.size)
+    return 0;
+  else {
+    s.array[++s.top] = x;
+    return 1;
+  }
+}
+
+int pop(struct Stack s) {
+  if (stack_empty(s))
+    return 0; // Or otherwise signal an error
+  else
+    return s.array[s.top--];
+}<!-- HTML_TAG_END --></code></pre></article></div></main> <footer class="svelte-l62qxq" data-svelte-h="svelte-bofbda"><a href="https://github.com/samzofkie/"><i class="bx bxl-github svelte-l62qxq"></i></a> <p>samzofkie@gmail.com</p> <a href="https://www.linkedin.com/in/samzofkie/"><i class="bx bxl-linkedin-square svelte-l62qxq"></i></a></footer></div> 
+			
+			<script>
+				{
+					__sveltekit_ijid6g = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../_app/immutable/entry/start.D8zJcVFl.js"),
+						import("../_app/immutable/entry/app.CVhHqf8x.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 17],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

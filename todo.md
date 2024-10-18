@@ -1,0 +1,12 @@
+- Optimize `jessi-flower` and `png`s and JPGs of tables I made for speed
+- Properly color `jessi-flower`
+- Find favicon
+- Take picture of pants
+- Rewrite copy
+- Dark mode (/light mode)
+- Projects
+- Think about readability
+- Get a `@samzofkie.com` email address
+- Mobile layout
+- Gradients ?
+- Error pages
