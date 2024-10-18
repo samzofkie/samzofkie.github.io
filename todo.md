@@ -10,6 +10,4 @@
 - Mobile layout
 - Gradients ?
 - Error pages (404)
-- Change links color
 - Put picture of myself in `/about`
-- nix `/misc` page

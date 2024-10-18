@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: var(--accent-1);
+}
+
 h1, h2, h3, h4, h5, h6, p, ul, pre {
   margin: 0px;
 }

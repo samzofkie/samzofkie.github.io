@@ -8,21 +8,21 @@
 
 		
 		<link href="../_app/immutable/assets/2.BzkvGSh8.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/palette.BUO4EXAJ.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/palette.CuebbMpH.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/3.CCmcT8fn.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/app.DorXpWP5.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.BHHOU-ib.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/entry.Cfm08QNR.js">
+		<link href="../_app/immutable/assets/app.B6uTZ9AQ.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.YaWB-MRX.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/entry.B1S_8QFu.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.Cs0xm5t1.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/paths.Cj6pXA5x.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.BJmzblFo.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/paths.CCPiHKFV.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.B65re6QH.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.Cky_bo-2.js">
 		<link rel="modulepreload" href="../_app/immutable/nodes/0.DeDwQ5e1.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/2.Bn_nctJk.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.Ckt57T2_.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/utils.DmS9rhxz.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/stores.AifZvxVG.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/3.5BtIkOAV.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/16.BqUfXFgl.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores.BnQTIqGf.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/3.Dn-s5imM.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/16.xl1H6cHx.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">   <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet">  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">  <div class="narrow svelte-l62qxq"><header class="svelte-l62qxq" data-svelte-h="svelte-1s44jko"><a href="../" class="nav-root"><img class="flower-logo svelte-l62qxq" src="/jessi-flower-logo.png" alt="A line drawing of a flower."></a> <nav class="svelte-l62qxq"><a href="../about" class="nav-link svelte-l62qxq">About</a> <a href="../notes" class="nav-link svelte-l62qxq">Notes</a> <a href="../projects" class="nav-link svelte-l62qxq">Projects</a> <a href="../misc" class="nav-link svelte-l62qxq">Misc</a></nav></header> <main class="svelte-l62qxq"><div class="main-content"><a href="../notes" class="svelte-ktzxg4" data-svelte-h="svelte-19tevi8"><i class="bx bx-left-arrow-alt"></i> Notes</a> <article id="refactoring-ui"><h1 data-svelte-h="svelte-zs6qws">Refactoring UI</h1> <p data-svelte-h="svelte-icrjfl">In the beginning:</p> <ul data-svelte-h="svelte-1qxzn23"><li>Start with a feature, not a layout.</li> <li>Details come later.</li> <li>No color yet.</li> <li>Don&#39;t think about edge cases too much (how will this screen look if there are 2000 contacts.)</li> <li>Design a simple version, code it, and repeat-- keep a tight feedback loop between the design and implementation.</li> <li>Don&#39;t imply functionality in your design that you aren&#39;t ready to build.</li> <ul><li>Assume things will be hard to build!</li> <li>Design nice-to-haves later.</li></ul> <li>Figure out your personality-- professional and secure or fun and playful.</li> <li>Pay attention to how colors feel to you:
@@ -36,7 +36,7 @@ should be good to start.</p> <p data-svelte-h="svelte-47o6w">Use good fonts. Pla
 			
 			<script>
 				{
-					__sveltekit_1g4albq = {
+					__sveltekit_cngonn = {
 						base: new URL("..", location).pathname.slice(0, -1)
 					};
 
@@ -45,8 +45,8 @@ should be good to start.</p> <p data-svelte-h="svelte-47o6w">Use good fonts. Pla
 					const data = [null,null,null,null];
 
 					Promise.all([
-						import("../_app/immutable/entry/start.BHHOU-ib.js"),
-						import("../_app/immutable/entry/app.BJmzblFo.js")
+						import("../_app/immutable/entry/start.YaWB-MRX.js"),
+						import("../_app/immutable/entry/app.B65re6QH.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2, 3, 16],
