@@ -68,4 +68,55 @@
   There are plenty of other examples of overlap between document and relational databases. Postgres, MySQL and IDM DB2 support JSON documents, and have supported XML for a long time. RethinkDB (a document database) has relational-style joins, and some MongoDB drivers automatically resolve database references, essentially unoptimized joins. Document and relational databases complement one another.
 </p>
 
-<h2>Query languages</h2>
+<h3>Query languages</h3>
+
+<p>
+  Relational algebra, on which the syntax of SQL is based, is <b>declarative</b> as opposed to <b>imperative</b>. Hiding the implementation of a query behind a declarative syntax (instead of imperatively, manually detailing how to execute it) allows the database engine to be responsible for much of the organization and maintenance of the data, improve performance, and may allow for easier parallel execution.
+</p>
+
+<p>
+  <b>MapReduce</b> is a programming model for processing large amounts of data in bulk across many machines, a limited form of which is supported by some NoSQL databases (specifically MongoDB and CouchDB). MongoDB's version uses a weird blend of declarative and imperative styles, where a filter is done declaratively the query and then <i>pure</i> snippets of imperative code for <code>map</code> and <code>reduce</code> are executed on the results of the filter.
+</p>
+
+<p>
+  You could implement a higher level query language like SQL as a pipeline of MapReduce operations, but there are many distributed implementations of SQL.
+</p>
+
+<p>
+  Because the imperative code can be difficult for the user to write and for the query engine to optimize, MongoDB added a feature implementing a declarative query language called the <i>aggregation pipeline</i>-- thus coming full circle, basically back to SQL.
+</p>
+
+<h3>Graph-like data models</h3>
+
+<p>
+  <b>Graphs</b> have two types of objects: <b>vertices</b> and <b>edges</b>. This simplicity allows it to be able to model a great diversity of data-- for example, Facebook uses an enormous graph where vertices can be people, locations, events, comments ect., and edges indicate things like who posted that comment, who checked in where and when, who's friends with who, ect. This is great for many-to-many relationships.
+</p>
+
+<p>
+  In the <b>property graph</b> model (implemented by Neo4j, Titan, and InfiniteGraph), vertices have a UID, sets of incoming and outgoing edges, and a collection of key-value pairs, and edges have a UID, references to the start (<i>tail</i>) and end (<i>head</i>) vertices it's associated with, a label, and it's own collection of key-value pairs. This can model a relationship between any two <i>things</i>, irrespective of type, and allow a user to traverse relationships efficiently. It's schemalass flexibilty makes it very easy to extend to support new features.
+</p>
+
+<p>
+  Cypher is a declarative query language created for the Neo4j database. In a creation query, vertices are given a symbolic name, and edges are declared between vertices with a labeled arrow like <code>(Idaho) -[:WITHIN]-> (USA)</code>. Querying for American ex-pats in Europe might look like:
+</p>
+
+<pre><code>{`MATCH
+(person) -[:BORN_IN]-> () -[:WITHIN*0..]-> (us:Location {name:'United States'}),
+(person) -[:LIVES_IN]-> () -[:WITHIN*0..]-> (eu:Location {name:'Europe'})
+RETURN person.name`}</code></pre>
+
+<p>
+  The <code>()</code> unspecified vertex and <code>-[:WITHIN*0..]-></code> tells the database engine to find people whose <code>[:BORN_IN]</code> vertex is connected via <code>[:WITHIN]</code> egdes to the <code>Location</code> named <code>'United States'</code>. As is common in declarative languages, the implementation isn't specified-- the query optimizer might begin with a list of people and search <code>[:WITHIN]</code> edges looking for <code>'United States'</code> or start with <code>'United States'</code> and work backwards looking for people.
+</p>
+
+<p>
+  You could model a graph in a relational database, using a table for vertices and another for edges, but this type of traversal, which may take a variable number steps along a path (expressed as 0 or more with the <code>*</code> in Cypher), would require a variable number of joins in SQL. Since SQL:1999 this has been possible using a feature called <i>recursive common table expressions</i>, using <code>WITH RECURSIVE</code>. However, implementing a query equivalent to the one above would be nightmarish.
+</p>
+
+<p>
+  The <b>triple-store model</b>, exemplified by Datomic, AllegroGraph, and others, reduces data to simple three-part statements like (Jim, likes, bananas)-- (subject, predicate, object), where the value of the object can be like a value, and the predicate a key ((Lucy, age, 33)), or it can be another vertex in the graph: (Lucy, marriedTo, Alan). Triple-store data can be formatted to be nicely readable.
+</p>
+
+<p>
+  
+</p>
