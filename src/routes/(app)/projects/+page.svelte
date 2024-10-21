@@ -1,12 +1,12 @@
 <style>
-  h1 {
-    margin-bottom: var(--padding-0);
+  h1, h2, p {
+    margin: 0px;
   }
 
   .spacing {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-0);
+    gap: 40px;
   }
 
   section {
