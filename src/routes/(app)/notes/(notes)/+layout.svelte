@@ -3,7 +3,23 @@
   import './note.css';
   import { page } from '$app/stores'
   import { base } from '$app/paths';
+
   const articleTopic = $page.url.pathname.split('/').slice(-1)[0];
+
+  import { onMount } from 'svelte';
+
+  import hljs from 'highlight.js/lib/core';
+  import c from 'highlight.js/lib/languages/c';
+  hljs.registerLanguage('c', c);
+  
+  onMount(() => {
+    for (let code of document.getElementsByTagName('code')) {
+      code.innerHTML = hljs.highlight(
+        code.innerText,
+        { language: 'c' }
+      ).value;
+    }
+  });
 </script>
 
 <style>

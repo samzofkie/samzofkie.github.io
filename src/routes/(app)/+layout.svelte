@@ -1,5 +1,7 @@
 <script>
   import '$lib/palette.css';
+  import './app.css';
+  import './hl.css';
   import { pathToTitle } from '$lib/utils.js';
   import { base } from '$app/paths';
   import { page } from '$app/stores';

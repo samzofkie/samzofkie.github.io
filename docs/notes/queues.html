@@ -4,26 +4,26 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="../favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Sam Zofkie</title>
 
+		<title>Sam Zofkie</title>
 		
-		<link href="../_app/immutable/assets/2.BzkvGSh8.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/2.wQl5POnE.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/palette.B8_S4tdy.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/app.BCu5gd7j.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/3.CCmcT8fn.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/app.Cw3IfyIZ.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/11.IZ1NGOtz.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.LvAvHBL-.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/entry.C6qZx-on.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.CM0lM-GT.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/entry.GcHhT8LX.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.Cs0xm5t1.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/paths.B3Am4bZM.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.B5Sg2vVy.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/paths.CB-5apn8.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.BV23PPHl.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.Cky_bo-2.js">
 		<link rel="modulepreload" href="../_app/immutable/nodes/0.DeDwQ5e1.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/2.z6Q1I99r.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.wv002sEY.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/utils.DmS9rhxz.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/stores.BpoRJa5L.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/3.ClRNfDfI.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/15.CLC9c7Kh.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores.CawAspQQ.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/3.3pqIcpCf.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/16.CLC9c7Kh.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">   <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet">  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">  <div class="narrow svelte-l62qxq"><header class="svelte-l62qxq" data-svelte-h="svelte-1s44jko"><a href="../" class="nav-root"><img class="flower-logo svelte-l62qxq" src="/jessi-flower-logo.png" alt="A line drawing of a flower."></a> <nav class="svelte-l62qxq"><a href="../about" class="nav-link svelte-l62qxq">About</a> <a href="../notes" class="nav-link svelte-l62qxq">Notes</a> <a href="../projects" class="nav-link svelte-l62qxq">Projects</a> <a href="../misc" class="nav-link svelte-l62qxq">Misc</a></nav></header> <main class="svelte-l62qxq"><div class="main-content"><a href="../notes" class="svelte-ktzxg4" data-svelte-h="svelte-19tevi8"><i class="bx bx-left-arrow-alt"></i> Notes</a> <article id="queues"><h1 data-svelte-h="svelte-16sqzmw">Queues</h1> <p data-svelte-h="svelte-13zp5kn"><b>Queues</b> are dynamic sets whose <code>delete</code> operation implements a <b>first-in, last-out (FILO)</b> policy. Adding to a queue is to <b>enqueue</b> and removing is to <b>dequeue</b>. Like linked lists, queues have a <b>head</b> and a <b>tail</b>. Enqueues always add to the tail and dequeues always take from the head. Enqueuing and dequeuing both take <math class="svelte-1flrsht">O(n)</math> time.</p> <p data-svelte-h="svelte-swbk0c">The queue will wrap around over time:</p> <pre><code><!-- HTML_TAG_START -->struct Queue {
@@ -50,7 +50,7 @@ int dequeue(struct Queue q) {
 			
 			<script>
 				{
-					__sveltekit_2oc3sg = {
+					__sveltekit_3d51x6 = {
 						base: new URL("..", location).pathname.slice(0, -1)
 					};
 
@@ -59,11 +59,11 @@ int dequeue(struct Queue q) {
 					const data = [null,null,null,null];
 
 					Promise.all([
-						import("../_app/immutable/entry/start.LvAvHBL-.js"),
-						import("../_app/immutable/entry/app.B5Sg2vVy.js")
+						import("../_app/immutable/entry/start.CM0lM-GT.js"),
+						import("../_app/immutable/entry/app.BV23PPHl.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 2, 3, 15],
+							node_ids: [0, 2, 3, 16],
 							data,
 							form: null,
 							error: null

@@ -116,7 +116,3 @@ RETURN person.name`}</code></pre>
 <p>
   The <b>triple-store model</b>, exemplified by Datomic, AllegroGraph, and others, reduces data to simple three-part statements like (Jim, likes, bananas)-- (subject, predicate, object), where the value of the object can be like a value, and the predicate a key ((Lucy, age, 33)), or it can be another vertex in the graph: (Lucy, marriedTo, Alan). Triple-store data can be formatted to be nicely readable.
 </p>
-
-<p>
-  
-</p>

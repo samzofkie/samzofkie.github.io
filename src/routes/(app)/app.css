@@ -28,6 +28,10 @@ code {
   line-height: 1em;
 }
 
+pre code {
+  line-height: 1.2em;
+}
+
 math {
   font-style: italic;
 }

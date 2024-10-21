@@ -44,10 +44,10 @@ int right(int i) {
 }`}</code></pre>
 
 <p>
-  A <b>heapify</b> algorithm helps maintain a heap's heap property. It's called with a heap and an index to start at, and assumes that the sub-heaps to the left and right of the index maintain the heap propery, but that <math>H[i]</math> might not. Here's <code>max_heapify</code>:
+  A <b>heapify</b> algorithm maintains a heap's heap property. It's called with a heap and an index to start at, and assumes that the sub-heaps to the left and right of the index maintain the heap propery, but that <math>H[i]</math> might not. Here's <code>max_heapify</code>:
 </p>
 
-<code><pre>{@html `void max_heapify(struct Heap h, int i) {
+<pre><code>{@html `void max_heapify(struct Heap h, int i) {
   int left = left(i);
   int right = right(i);
   int largest = -1;
@@ -65,7 +65,7 @@ int right(int i) {
     heap.array[largest] = temp;
     max_heapify(h, largest);
   }
-}`}</pre></code>
+}`}</code></pre>
 
 <p>
   The runtime of <code>max_heapify</code> is <math>O(log n)</math> or <math>O(h)</math> (for height <math>h</math>), and the proof is complicated enough I'm not going to get into it here.

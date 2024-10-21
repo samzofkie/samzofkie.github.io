@@ -15,6 +15,7 @@
       'Graphs',
       'Dynamic arrays',
       'Heaps',
+      'Priority queues',
     ],
     'Frontend': [
       'Refactoring UI',

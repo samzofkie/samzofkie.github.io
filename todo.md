@@ -9,3 +9,6 @@
 - Gradients ?
 - Error pages (404)
 - Put picture of myself in `/about`
+- Foldable cards
+- Code syntax highlighting
+- Reverse background colors between `main` and `header`/`footer` in main `+layout.svelte`
