@@ -1,8 +1,7 @@
-<style>
-  math {
-    font-style: italic;
-  }
-</style>
+<script>
+  import { highlightCCode } from '$lib/utils.js';
+  highlightCCode();
+</script>
 
 <h1>Queues</h1>
 

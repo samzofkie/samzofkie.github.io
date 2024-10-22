@@ -23,6 +23,7 @@
     ],
     'Backend': [
       'Designing Data-Intensive Applications',
+      'Postgres',
     ]
   };
 </script>

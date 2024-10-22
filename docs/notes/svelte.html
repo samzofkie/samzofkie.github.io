@@ -8,22 +8,22 @@
 		<title>Sam Zofkie</title>
 		
 		<link href="../_app/immutable/assets/2.wQl5POnE.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/palette.B8_S4tdy.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/app.BCu5gd7j.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/palette.Br2rV-B5.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/app.DV6AH30b.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/3.CCmcT8fn.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/19.1AXqm2VU.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.CM0lM-GT.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/entry.GcHhT8LX.js">
+		<link href="../_app/immutable/assets/20.1AXqm2VU.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.UIOY-OsW.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/entry.B9pNw5cw.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.Cs0xm5t1.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/paths.CB-5apn8.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.BV23PPHl.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/paths.G9lZU9YZ.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.DT8CszB0.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.Cky_bo-2.js">
 		<link rel="modulepreload" href="../_app/immutable/nodes/0.DeDwQ5e1.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/2.wv002sEY.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/utils.DmS9rhxz.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/stores.CawAspQQ.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/3.3pqIcpCf.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/19.BRVeTGHh.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.Czu_EiDr.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/utils.BJnaAM-2.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores.Bhvups4N.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/3.melxh5M8.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/20.k9lBORNr.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">   <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet">  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">  <div class="narrow svelte-l62qxq"><header class="svelte-l62qxq" data-svelte-h="svelte-1s44jko"><a href="../" class="nav-root"><img class="flower-logo svelte-l62qxq" src="/jessi-flower-logo.png" alt="A line drawing of a flower."></a> <nav class="svelte-l62qxq"><a href="../about" class="nav-link svelte-l62qxq">About</a> <a href="../notes" class="nav-link svelte-l62qxq">Notes</a> <a href="../projects" class="nav-link svelte-l62qxq">Projects</a> <a href="../misc" class="nav-link svelte-l62qxq">Misc</a></nav></header> <main class="svelte-l62qxq"><div class="main-content"><a href="../notes" class="svelte-ktzxg4" data-svelte-h="svelte-19tevi8"><i class="bx bx-left-arrow-alt"></i> Notes</a> <article id="svelte"><h1 data-svelte-h="svelte-rz6m5f">Svelte</h1> <p data-svelte-h="svelte-1y3qnaa">In Svelte you build <b>apps</b> declaratively out of <b>components</b> that combine combine markup, styles and behaviors. Components are then compiled into small efficient JavaScript modules.</p> <p data-svelte-h="svelte-cn4xh3">The basic syntax features of a Svelte component are:</p> <ul><li data-svelte-h="svelte-1g7dy2e">You can insert JavaScript variables into HTML with curly braces.</li> <li>You can set HTML attributes with these curly braces, and if your JavaScript variable happens to have the same name as the attribute you&#39;re setting, there&#39;s a nice shorthand syntax where you can just write: <code>&lt;img {alt} /></code> instead of <code>&lt;img alt={alt} /></code>.</li> <li><b data-svelte-h="svelte-w8rjk6">Styles</b> (set in <code>&lt;style></code> tags) are <u data-svelte-h="svelte-10rvqsp">scoped to components</u>.</li> <li>Components can be imported (in a <code data-svelte-h="svelte-xpqqe6">&lt;script&gt;</code> tag) like <code>import Comp from './path/to/Comp.svelte';</code>.</li> <li>You can (dangerously) render HTML directly into a component from JavaScript with the special <code>{@html '...'}</code> tag.</li></ul> <p data-svelte-h="svelte-xae4gq">Here&#39;s an that example uses all of these features:</p> <pre class="svelte-m88qrx"><code>// Nested.svelte
@@ -195,7 +195,7 @@
 			
 			<script>
 				{
-					__sveltekit_3d51x6 = {
+					__sveltekit_xiv7lf = {
 						base: new URL("..", location).pathname.slice(0, -1)
 					};
 
@@ -204,11 +204,11 @@
 					const data = [null,null,null,null];
 
 					Promise.all([
-						import("../_app/immutable/entry/start.CM0lM-GT.js"),
-						import("../_app/immutable/entry/app.BV23PPHl.js")
+						import("../_app/immutable/entry/start.UIOY-OsW.js"),
+						import("../_app/immutable/entry/app.DT8CszB0.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 2, 3, 19],
+							node_ids: [0, 2, 3, 20],
 							data,
 							form: null,
 							error: null

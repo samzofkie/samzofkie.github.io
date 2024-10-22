@@ -35,3 +35,15 @@ pre code {
 math {
   font-style: italic;
 }
+
+h1 {
+  font-size: var(--size-6);
+}
+
+h2 {
+  font-size: var(--size-5);
+}
+
+h3 {
+  font-size: var(--size-4);
+}

@@ -1,3 +1,8 @@
+<script>
+  import { highlightCCode } from '$lib/utils.js';
+  highlightCCode();
+</script>
+
 <h1>Stacks</h1>
 
 <p>

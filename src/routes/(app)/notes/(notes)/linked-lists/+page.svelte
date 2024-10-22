@@ -1,3 +1,8 @@
+<script>
+  import { highlightCCode } from '$lib/utils.js';
+  highlightCCode();
+</script>
+
 <h1>
   Linked lists
 </h1>
@@ -23,8 +28,6 @@
 <p>
   A <b>sentinel</b> is a dummy object that simplified boundary conditions. The sentinel represents <code>NIL</code> but has the attributes of a node (<code>next</code>, <code>key</code>, <code>prev</code> if doubly linked). Using sentinels doesn't change the asymptotic run time of linked list operations, but can decrease the constant factor.
 </p>
-
-<h2>C</h2>
 
 <pre><code>{@html `struct Node {
   int value;

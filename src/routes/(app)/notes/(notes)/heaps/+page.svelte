@@ -1,8 +1,7 @@
-<style>
-  math {
-    font-style: italic;
-  }
-</style>
+<script>
+  import { highlightCCode } from '$lib/utils.js';
+  highlightCCode();
+</script>
 
 <h1>Heaps</h1>
 
@@ -51,6 +50,7 @@ int right(int i) {
   int left = left(i);
   int right = right(i);
   int largest = -1;
+
   if (left &lt; heap.size + 1 &&
       heap.array[left] &gt; heap.array[i])
     largest = left;
@@ -59,6 +59,7 @@ int right(int i) {
   if (right &lt; heap.size + 1 &&
       h.array[right] &gt; h.array[largest])
     largest = right;
+    
   if (largest != i) {
     int temp = heap.array[i];
     heap.array[i] = heap.array[largest];
