@@ -11,3 +11,4 @@
 - Put picture of myself in `/about`
 - Foldable cards
 - Reverse background colors between `main` and `header`/`footer` in main `+layout.svelte`
+- GitHub actions

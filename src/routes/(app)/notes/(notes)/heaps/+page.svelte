@@ -9,22 +9,6 @@
   A <b>heap</b> is an array that is interpreted as a nearly complete binary tree: for a heap <math>H</math>, <math>H[0]</math> is the root of tree, <math>H[1]</math> is the left child of root, <math>H[2]</math> is the right child of the root, <math>H[3]</math> is the left child of the left child of the root, and so on and so forth for the size of the array.
 </p>
 
-<p>
-  Heaps have a <b>heap property</b>: in a <b>max-heap</b>, the property is that for every node <math>i</math> other than the root,
-</p>
-
-<blockquote>
-  <math>H[PARENT(i)] &ge; H[i]</math>
-</blockquote>
-
-<p>
-  aka the value of any node is at most the value of it's parent. A <b>min-heap</b> is the reverse.
-</p>
-
-<p>
-  The <b>height</b> of a heap is the height of the binary tree the heap represents. For an array of <math>n</math> elements, a heap's height is <math>O(log n)</math>.
-</p>
-
 <pre><code>{@html `struct Heap {
   int size;
   int array[HEAP_SIZE];
@@ -43,7 +27,23 @@ int right(int i) {
 }`}</code></pre>
 
 <p>
-  A <b>heapify</b> algorithm maintains a heap's heap property. It's called with a heap and an index to start at, and assumes that the sub-heaps to the left and right of the index maintain the heap propery, but that <math>H[i]</math> might not. Here's <code>max_heapify</code>:
+  Heaps have a <b>heap property</b>: in a <b>max-heap</b>, the property is that for every node <math>i</math> other than the root,
+</p>
+
+<blockquote>
+  <math>H[PARENT(i)] &ge; H[i]</math>
+</blockquote>
+
+<p>
+  aka the value of any node is at most the value of it's parent. A <b>min-heap</b> is the reverse.
+</p>
+
+<p>
+  The <b>height</b> of a heap is the height of the binary tree the heap represents. For an array of <math>n</math> elements, a heap's height is <math>O(log n)</math>.
+</p>
+
+<p>
+  A <b>heapify</b> algorithm maintains a heap's heap property. It's called with a heap and an index to start at, and assumes that the sub-heaps to the left and right of the index maintain the heap propery, but that <math>H[i]</math> might not:
 </p>
 
 <pre><code>{@html `void max_heapify(struct Heap h, int i) {
@@ -54,11 +54,11 @@ int right(int i) {
   if (left &lt; heap.size + 1 &&
       heap.array[left] &gt; heap.array[i])
     largest = left;
-  else
-    largest = i;
-  if (right &lt; heap.size + 1 &&
+  else if (right &lt; heap.size + 1 &&
       h.array[right] &gt; h.array[largest])
     largest = right;
+  else
+    largest = i;
     
   if (largest != i) {
     int temp = heap.array[i];
