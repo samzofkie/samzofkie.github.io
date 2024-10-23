@@ -3,12 +3,6 @@
   afterNavigate(() => document.title = 'Notes on DDIA')
 </script>
 
-<style>
-  h2 {
-    font-size: 1.2em;
-  }
-</style>
-
 <h1>
   Designing Data-Intensive Applications
 </h1>
@@ -115,4 +109,90 @@ RETURN person.name`}</code></pre>
 
 <p>
   The <b>triple-store model</b>, exemplified by Datomic, AllegroGraph, and others, reduces data to simple three-part statements like (Jim, likes, bananas)-- (subject, predicate, object), where the value of the object can be like a value, and the predicate a key ((Lucy, age, 33)), or it can be another vertex in the graph: (Lucy, marriedTo, Alan). Triple-store data can be formatted to be nicely readable.
+</p>
+
+<p>
+  The "semantic web" was a movement based on the idea that websites should publish machine-readable data about their information in a standardized format, creating an Internet-wide "database of everything". There's even an RFC for a spec called <i>Resource Description Framework (RDF)</i> for this. The Turtle language is a human-readable format for RDF data. Predicates in RDF triple-store data model can be URIs such as <code>{`<http://my-company.com/namespace#lives_in>`}</code> so it's possible to define your own meaning of "lives in".
+</p>
+
+<p>
+  SPARQL ("sparkle") is a query language for triple-stores using the RDF data model. RDF doesn't distinguish between properties and edges, it just uses predicates for both.
+</p>
+
+<p>
+  Datalog was an influential and extensively studied query language. It's the query language for Datomic, and Cascalog is a tool for using Datalog to query large datasets in Hadoop. Unlike Cypher triples are written in the format predicate(subject, object). It's also a subset of Prolog. Datalog is capable of a higher level of abstraction than SPARQL and Cypher, so although less convenient for single queries it can hold up better for large, complex data models.
+</p>
+
+<h2>Storage and retrieval</h2>
+
+<blockquote>
+  <i>On the most fundamental level, a database needs to do two things: when you give it some data, it should store the data, and when you ask it again later, it should give the data back to you.</i> - Martin Kleppmann
+</blockquote>
+
+<p>
+  A <b>log</b> is an append-only sequence of records. Searching a log for something isn't great-- <math>O(n)</math> not great. Databases use auxiliary data structures to speed up things like search-- these data structures are called <b>indexes</b>. Adding and removing indexes doesn't affect the data in your system, just the performance of queries. Indexes tend to improve the performance of reads but slow down writes, so using them is a tradeoff.
+</p>
+
+<p>
+  <b>Hash tables</b> are often used for indexing. If you're just appending to a log file, on insertion store the byte offset of the new value in a hash table, and on reads just lookup the byte offset in the hash table. This is essentially what Bitcast (the default storage engine in Riak) does. With this approach, every once in a while you'll need to perform <b>compaction</b> on your file-- throwing away duplicate or invalidated logs, keeping only the most recent update. You also can perform <b>merging</b>, merging multiple old log files while compaction them. Compaction and merging can happen in the background so as not to interfere with the system otherwise.
+</p>
+
+<p>
+  There are some simple implementation considerations that complicate this otherwise simple schema-- you'll want to use a binary format for text, you need to use <b>tombstones</b> for deletions, if your system crashes and all your data was in-memory, recreating the hash tables from log files can be expensive, you need checksums to deal with crashes that occur halfway through a write, you need to work out concurrency. Furthermore, appending happens to have better performance for disk drives and SSDs, and simplify concurrency and crash recovery. Using hash tables as an index also has some drawbacks, namely the hash table must fit entirely in memory to perform well, and querying a range of keys (<code>kitty000</code> to <code>kitty999</code>) is inefficient.
+</p>
+
+<p>
+  A <b>sorted string table (SSTable)</b> is like our log file, but where all key value pairs are sorted by key. This offers some nice properties:
+</p>
+
+<ol>
+  <li>
+    Merging segment files is quite efficient.
+  </li>
+  <li>
+    Instead of indexing all keys, you can keep a sparse index of evenly spread out keys, and iterate: if you're searching for <code>handiwork</code> and your index has <code>handbag</code> and <code>handsome</code>, you can jump to <code>handbag</code> and search from there. This still requires an in-memory index, but it can be as sparse as one key per few kilobytes since the time to scan a kilbyte is small.
+    <ul>
+      <li>
+        It's worth noting that binary search would eradicate the need for an in-memory index all together, but with variable length keys and values it's hard to tell where one key value pair ends and another begins.
+      </li>
+    </ul>
+  </li>
+  <li>
+    You can group records into blocks and compress them before writing them to disk which saves disk space and reduces I/O bandwidth use.
+  </li>
+</ol>
+
+<p>
+  Maintaining a sorted structure is easier in memory than on disk, using red-black trees or AVL trees.
+</p>
+
+<ol>
+  <li>
+    When a write comes in, insert it to the in-memory balanced tree data structure, called a <b>memtable</b>.
+  </li>
+  <li>
+    When the memtable hits a certain threshold, maybe a few megabytes, write it out to an SSTable file, which becomes the most recent segment. While it's being written, writes can go to a new memtable.
+  </li>
+  <li>
+    For read requests, first check the key in the memtable, then the most recent segment, then the next most recent segment, and so on.
+  </li>
+  <li>
+    Periodically run a merge and compaction process in the background.
+  </li>
+</ol>
+
+<p>
+  This works great, except if the system crashes, everything in the current memtable is lost. The way around this is to immeadiately write each write to an unsorted log on disk. This log can get deleted everytime the memtable is written to an SSTable file.
+</p>
+
+<p>
+  This is essentially what LevelDB and RocksDB do, as well as storage engines in Cassandra and HBase. All of these were inspired by Google's BigTable paper, which is where the terms memtable and SSTable were introduced. Originally this indexing structure was described under the name <b>Log-Structured Merge-Tree (LSM-Tree)</b>. Storage engines based on this principle are often called LSM storage engines. Lucene uses a similar method for storing it's <i>term dictionary</i>, where it maps terms (words) to lists of IDs of all the documents containing that term.
+</p>
+
+<p>
+  Many additional details go into making a storage engine perform well in practice. Trying to read for keys that aren't there can be expensive, since you potentially have to search many segments. This can be optimized with a <b>Bloom filter</b>. There are also two predominant strategies for how SSTables are compacted and merged-- <b>size-tiered</b> and <b>leveled</b> compaction. In size-tiered, newer and smaller SSTables are progressively merged into older and larger ones. In leveled compaction, the key range is split into smaller SSTables and the older data is moved to separate "levels" which allows compaction to proceed incrementally and use less disk space.
+</p>
+
+<p>
+  The basic idea of LSM-trees, keeping a cascade of SSTables that are merged in the background, is simple and effective. Unlike the first hash-table-indexed log-based approach, this system works well for range queries, and has remarkably high write throughput.
 </p>
