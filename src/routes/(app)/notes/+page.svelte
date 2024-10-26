@@ -16,6 +16,14 @@
       'Dynamic arrays',
       'Heaps',
       'Priority queues',
+      'Hash tables',
+    ],
+    'Algorithms': [
+      'Breadth-first search',
+      'Binary search',
+      'Merge sort',
+      'Quicksort',
+      'Bucket sort'
     ],
     'Frontend': [
       'Refactoring UI',

@@ -1,12 +1,4 @@
-<style>
-  math {
-    font-style: italic;
-  }
-</style>
-
-<h1>
-  Graphs
-</h1>
+<h1>Graphs</h1>
 
 <p>
   <b>Graphs</b> are collections of nodes with <b>edges</b> connecting them. In a <b>directed</b> graph, the edges have directions (like an edge might go from <math>a</math> to <math>b</math> but not from <math>b</math> to <math>a</math>), and in an <b>undirected</b> graph, they don't (an edge connecting <math>a</math> to <math>b</math> also connects <math>b</math> to <math>a</math>).

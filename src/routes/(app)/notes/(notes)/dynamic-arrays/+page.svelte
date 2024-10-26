@@ -1,12 +1,4 @@
-<style>
-  math {
-    font-style: italic;
-  }
-</style>
-
-<h1>
-  Dynamic Arrays
-</h1>
+<h1>Dynamic Arrays</h1>
 
 <p>
   Many languages have <b>dynamic arrays</b>, arrays that automatically resize, typically doubling whenever the array becomes full. Like static arrays, access is still <math>O(1)</math>, but doubling takes <math>O(n)</math>.
