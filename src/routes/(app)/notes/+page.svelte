@@ -26,6 +26,7 @@
       'Bucket sort'
     ],
     'Frontend': [
+      'SEO',
       'Refactoring UI',
       'Svelte',
     ],
