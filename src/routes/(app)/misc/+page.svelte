@@ -4,11 +4,11 @@
 
 <style>
   h2 {
-    margin-bottom: var(--padding-0);
+    margin-bottom: var(--padding-1);
   }
 
   #quotes p {
-    margin: var(--padding-1) 0px;
+    margin: var(--padding-2) 0px;
   }
 </style>
 

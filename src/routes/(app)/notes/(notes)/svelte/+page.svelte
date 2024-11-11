@@ -2,7 +2,7 @@
   pre {
     border: 1px solid var(--gray-7);
     border-radius: var(--radius-1);
-    padding: var(--padding-0);
+    padding: var(--padding-1);
     text-wrap: wrap;
   }
 </style>

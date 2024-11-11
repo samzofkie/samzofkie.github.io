@@ -18,7 +18,7 @@
   :global(body) {
     background-color: var(--gray-0);
     color: var(--gray-7);
-    margin: var(--padding-0);
+    margin: var(--padding-1);
     font-family: "Inter", sans-serif;
     font-size: 16px;
   }
@@ -39,7 +39,7 @@
 
     background-color: var(--gray-2);
     border-radius: var(--radius-1);
-    padding: var(--padding-0);
+    padding: var(--padding-1);
   }
 
   header {
@@ -48,7 +48,7 @@
 
   nav {
     display: flex;
-    gap: var(--padding-0);
+    gap: var(--padding-1);
   }
 
   .flower-logo {
@@ -69,7 +69,7 @@
     text-decoration: none;
     color: var(--gray-7);
     background-color: var(--gray-3);
-    padding: var(--padding-0);
+    padding: var(--padding-1);
     border-radius: var(--radius-1);
     transition: color 0.25s, background-color 0.25s;
   }
@@ -80,7 +80,7 @@
   }
 
   main {
-    padding: var(--padding-1);
+    padding: var(--padding-2);
   }
 
   @media only screen and (max-width: 800px) {

@@ -67,3 +67,33 @@
 
 <pre><code>ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", "daos.xml");</code></pre>
 
+<p>
+  You can also use multiple XML files by linking additional ones using an <code>{`<import>`}</code> tag.
+</p>
+
+<h4>The Container</h4>
+
+<p>
+  <code>ApplicationContext</code> maintains a registry of beans and their dependencies, which can be queried with the <code>getBean</code> method:
+</p>
+
+<pre><code>// create and configure beans
+ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", "daos.xml");
+
+// retrieve configured instance
+PetStoreService service = context.getBean("petStore", PetStoreService.class);
+
+// use configured instance
+List&lt;String&gt; userList = service.getUsernameList();</code></pre>
+
+<p>
+  You could also use a <code>GenericApplicationContext</code> with <b>reader delegates</b>, such as <code>XmlBeanDefinitionReader</code> for XML files, like:
+</p>
+
+<pre><code>GenericApplicationContext context = new GenericApplicationContext();
+  new XmlBeanDefinitionReader(context).loadBeanDefinitions("services.xml", "daos.xml");
+  context.refresh();</code></pre>
+
+<p>
+  Ideally, your application code never uses <code>getBean</code>, ideally Spring's dependency injection and declaring the dependencies between your beans through metadata should take care of things for you.
+</p>

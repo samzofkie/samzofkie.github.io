@@ -2,7 +2,7 @@
   table {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-0);
+    gap: var(--padding-1);
   }
 
   tr {

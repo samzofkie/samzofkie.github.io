@@ -12,7 +12,7 @@
   section {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-1);
+    gap: var(--padding-2);
   }
 </style>
 

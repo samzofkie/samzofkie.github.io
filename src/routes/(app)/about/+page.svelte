@@ -7,13 +7,13 @@
   table {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-0);
+    gap: var(--padding-1);
   }
 
   tr {
     display: grid;
     grid-template-columns: 100px auto;
-    column-gap: var(--padding-1);
+    column-gap: var(--padding-2);
   }
 
   th {
